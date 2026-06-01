@@ -193,8 +193,6 @@ h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.5rem); li
     box-shadow: var(--shadow-lg);
   }
 
-  .legacy-date { display:none !important; }
-
   .btn-no { background: #f0e8ea; color: var(--color-text-muted); position: absolute; transition: none; white-space: nowrap; }
 .letter-card {
   background: var(--color-surface); border-radius: var(--radius-xl); padding: 2.5rem 2rem;
@@ -358,8 +356,8 @@ I hope this letter doesn't make you think I'm weird, and I hope when you respond
 <!-- PAGE 3 -->
 <section class="page" id="page3">
   <span class="heart-icon">📅</span>
-  <h2>If yes, what day are you available?</h2>
-  <p class="subtitle">Choose any date that works best for you.</p>
+  <h2>Pick our perfect date</h2>
+  <p class="subtitle">When would you like us to meet? Fill in the details below!</p>
   <div class="date-card">
     <form class="date-form" onsubmit="confirmDate(event)">
       <div class="date-field">
@@ -649,6 +647,68 @@ function launchConfetti() {
       specialVideo.addEventListener('playing', stopBgAudio);
     }
   })();
+</script>
+
+<script>
+(function(){
+  const pages = Array.from(document.querySelectorAll('.page'));
+  const cafe = document.getElementById('pageCafeInvite');
+  const availability = document.getElementById('availabilityPrompt');
+  const yesBtns = document.querySelectorAll('.btn-yes');
+  const cafeYes = document.getElementById('cafeYesBtn');
+  const cafeNo = document.getElementById('cafeNoBtn');
+  function showOnly(target){
+    pages.forEach(p=>p.classList.remove('active'));
+    if (target) target.classList.add('active');
+  }
+  if (cafeYes && availability){
+    cafeYes.addEventListener('click', ()=>showOnly(availability));
+  }
+  if (cafeNo && cafe){
+    cafeNo.addEventListener('click', ()=>{ cafeNo.textContent='Maybe later'; });
+  }
+  const originalYes = document.querySelector('.btn-yes');
+  if (originalYes && cafe){
+    originalYes.addEventListener('click', ()=>{
+      setTimeout(()=>showOnly(cafe), 50);
+    }, true);
+  }
+})();
+</script>
+
+<script>
+(function(){
+  const page1 = document.getElementById('page1');
+  const cafe = document.getElementById('pageCafeInvite');
+  const availability = document.getElementById('availabilityPrompt');
+  const yesButtons = Array.from(document.querySelectorAll('.btn-yes'));
+  const originalYes = yesButtons.find(btn => btn.id !== 'cafeYesBtn' && btn.id !== 'submitAvailability');
+  const cafeYes = document.getElementById('cafeYesBtn');
+  const cafeNo = document.getElementById('cafeNoBtn');
+  const submitAvailability = document.getElementById('submitAvailability');
+  const allPages = () => Array.from(document.querySelectorAll('.page'));
+  const showPage = (target) => {
+    allPages().forEach(p => p.classList.remove('active'));
+    if (target) target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  if (originalYes && cafe) {
+    originalYes.addEventListener('click', () => {
+      setTimeout(() => showPage(cafe), 0);
+    }, true);
+  }
+  if (cafeYes && availability) {
+    cafeYes.addEventListener('click', () => showPage(availability));
+  }
+  if (cafeNo) {
+    cafeNo.addEventListener('click', () => { cafeNo.textContent = 'Maybe later'; });
+  }
+  if (submitAvailability) {
+    submitAvailability.addEventListener('click', () => {
+      alert('Got it.');
+    });
+  }
+})();
 </script>
 </body>
 </html>
