@@ -170,6 +170,26 @@ h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.5rem); li
   }
 
   
+  
+  .cafe-shot {
+    margin: 0;
+  }
+
+  .cafe-shot figcaption {
+    margin-top: 0.45rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  .cafe-set-date {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
+  }
+
   .cafe-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -389,12 +409,13 @@ I hope this letter doesn't make you think I'm weird, and I hope when you respond
       I picked it because I think it would be a sweet place for us to spend time together, and I wanted to let you choose if that sounds like something you'd enjoy.
     </div>
     <div class="cafe-gallery">
-      <img src="cafe-1.jpg" alt="Door 3 Cafe photo 1">
-      <img src="cafe-2-2.jpg" alt="Door 3 Cafe photo 2">
-      <img src="cafe-3-3.jpg" alt="Door 3 Cafe photo 3">
-      <img src="cafe-4-4.jpg" alt="Door 3 Cafe photo 4">
-      <img src="cafe-5-5.jpg" alt="Door 3 Cafe photo 5">
+      <figure class="cafe-shot"><img src="cafe-1.jpg" alt="Door 3 Cafe photo 1"><figcaption>Cozy corner</figcaption></figure>
+      <figure class="cafe-shot"><img src="cafe-2-2.jpg" alt="Door 3 Cafe photo 2"><figcaption>Soft lights</figcaption></figure>
+      <figure class="cafe-shot"><img src="cafe-3-3.jpg" alt="Door 3 Cafe photo 3"><figcaption>Warm atmosphere</figcaption></figure>
+      <figure class="cafe-shot"><img src="cafe-4-4.jpg" alt="Door 3 Cafe photo 4"><figcaption>Cat wall art</figcaption></figure>
+      <figure class="cafe-shot"><img src="cafe-5-5.jpg" alt="Door 3 Cafe photo 5"><figcaption>Sleepy cats</figcaption></figure>
     </div>
+    <div class="cafe-set-date">Suggested date: June 24, 2026</div>
 
   </div>
 </section>
